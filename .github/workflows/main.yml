@@ -13,7 +13,7 @@ jobs:
 
       - uses: actions/upload-artifact@v1
         with:
-          name: mmiui_adblocklist
+          name: miui_adblocklist
           path: ${{ github.workspace }}/miui_blacklist.json
 
 
