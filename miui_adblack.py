@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 import json
 import time
-
+import yaml
 import requests
 
 def get_rules(url_list):
@@ -42,13 +42,14 @@ def make_file(rules):
     with open("./miui_blacklist.json", "w", encoding="utf-8") as f:
         json.dump(data, f)
 
+def read_repo_file(path = "./repo_list.yaml"):
+    repo_list = []
+    with open(path, 'r', encoding='utf8') as file:
+        repo_list = yaml.safe_load(file)
+    return repo_list
 
 if __name__ == '__main__':
-    url_list = ["https://easylist-downloads.adblockplus.org/easylistchina+easylistchina_compliance+easylist.txt",
-                "https://easylist-downloads.adblockplus.org/easylist.txt",
-                "https://raw.githubusercontent.com/cjx82630/cjxlist/master/cjx-annoyance.txt",
 
-                ]
 
-    rules = get_rules(url_list)
+    rules = get_rules(read_repo_file())
     make_file(rules)
