@@ -9,11 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4 # 使用python装配器
-        with:
-          python-version: '3.10' # 指定python版本
-          cache: 'poetry' # 设置缓存
-
-      - run: poetry install --requests
-      - run: poetry run python ./miui_adblack
+      - run: ls -lah
+      - run: python3 -m pip install requests
+      - run: python3 ./miui_adblack
 
