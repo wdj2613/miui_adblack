@@ -4,7 +4,6 @@ import time
 
 import requests
 
-
 def get_rules(url_list):
     rules = set()
     for url in url_list:
@@ -25,15 +24,15 @@ def get_rules(url_list):
 def make_file(rules):
     print("文件合成中：")
     li = []
-    id = 1
+    id = 49152
     for i in rules:
         date = {
             "id": id,
             "flag": 0,
             "rule": i,
-            "updateTime": int(time.time() * 1000 - 1000),
+            "updateTime": int((time.time()-100000000) * 1000 - 1000000),
             "network": 255,
-            "effectiveTime": int(time.time() * 1000)
+            "effectiveTime": int((time.time()-100000000) * 1000)
         }
         li.append(date)
         id += 1
