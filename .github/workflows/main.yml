@@ -12,4 +12,11 @@ jobs:
       - run: ls -lah
       - run: python3 -m pip install requests
       - run: python3 miui_adblack.py
+      - name: upload result
+
+      - uses: actions/upload-artifact@v1
+        with:
+          name: my-artifact
+          path: ${{ github.workspace }}/miui_blacklist.json
+
 
