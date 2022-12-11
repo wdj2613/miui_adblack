@@ -1,7 +1,6 @@
-name: Schedule Worker
+name: 自动生成去广告规则
 on:
   push:
-    # 分支随意
     branches:
       - master
 jobs:
@@ -9,13 +8,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: ls -lah
       - run: python3 -m pip install requests
       - run: python3 miui_adblack.py
 
       - uses: actions/upload-artifact@v1
         with:
-          name: my-artifact
+          name: mmiui_adblocklist
           path: ${{ github.workspace }}/miui_blacklist.json
 
 
