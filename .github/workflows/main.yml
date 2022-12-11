@@ -11,5 +11,5 @@ jobs:
       - uses: actions/checkout@v3
       - run: ls -lah
       - run: python3 -m pip install requests
-      - run: python3 ./miui_adblack
+      - run: python3 miui_adblack.py
 
