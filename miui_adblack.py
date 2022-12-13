@@ -1,9 +1,9 @@
 # -*- coding:utf-8 -*-
 import json
 import time
-
+import yaml
 import requests
-
+import sys
 
 def get_rules(url_list):
     rules = set()
@@ -25,15 +25,15 @@ def get_rules(url_list):
 def make_file(rules):
     print("文件合成中：")
     li = []
-    id = 1
+    id = 49152
     for i in rules:
         date = {
             "id": id,
             "flag": 0,
             "rule": i,
-            "updateTime": int(time.time() * 1000 - 1000),
+            "updateTime": int((time.time()-100000000) * 1000 - 1000000),
             "network": 255,
-            "effectiveTime": int(time.time() * 1000)
+            "effectiveTime": int((time.time()-100000000) * 1000)
         }
         li.append(date)
         id += 1
@@ -43,13 +43,16 @@ def make_file(rules):
     with open("./miui_blacklist.json", "w", encoding="utf-8") as f:
         json.dump(data, f)
 
+def read_repo_file(path = "./repo_list.yaml"):
+    info = None
+    with open(path, 'r', encoding='utf8') as file:
+        info = yaml.safe_load(file)
+    rulers = info.get("ruler")
+    return rulers
 
 if __name__ == '__main__':
-    url_list = ["https://easylist-downloads.adblockplus.org/easylistchina+easylistchina_compliance+easylist.txt",
-                "https://easylist-downloads.adblockplus.org/easylist.txt",
-                "https://raw.githubusercontent.com/cjx82630/cjxlist/master/cjx-annoyance.txt",
-
-                ]
-
-    rules = get_rules(url_list)
+    if len(sys.argv) >1:
+        rules = get_rules(sys.argv[1:])
+    else:
+        rules = get_rules(read_repo_file())
     make_file(rules)
