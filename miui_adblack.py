@@ -3,6 +3,7 @@ import json
 import time
 import yaml
 import requests
+improt sys
 
 def get_rules(url_list):
     rules = set()
@@ -49,7 +50,8 @@ def read_repo_file(path = "./repo_list.yaml"):
     return repo_list
 
 if __name__ == '__main__':
-
-
-    rules = get_rules(read_repo_file())
+    if len(sys.argv) >1:
+        rules = get_rules(sys.argv[1:])
+    else:
+        rules = get_rules(read_repo_file())
     make_file(rules)
