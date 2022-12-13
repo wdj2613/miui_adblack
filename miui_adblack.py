@@ -44,10 +44,11 @@ def make_file(rules):
         json.dump(data, f)
 
 def read_repo_file(path = "./repo_list.yaml"):
-    repo_list = []
+    info = None
     with open(path, 'r', encoding='utf8') as file:
-        repo_list = yaml.safe_load(file)
-    return repo_list
+        info = yaml.safe_load(file)
+    rulers = info.get("ruler")
+    return ruler
 
 if __name__ == '__main__':
     if len(sys.argv) >1:
