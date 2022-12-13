@@ -1,2 +1,5 @@
-- https://cdn.jsdelivr.net/gh/privacy-protection-tools/anti-AD@master/anti-ad-easylist.txt
-- https://cdn.jsdelivr.net/gh/damengzhu/banad/jiekouAD.txt
+ruler:
+  - https://cdn.jsdelivr.net/gh/privacy-protection-tools/anti-AD@master/anti-ad-easylist.txt
+  - https://cdn.jsdelivr.net/gh/damengzhu/banad/jiekouAD.txt
+version:
+  - 1.0
