@@ -3,7 +3,7 @@ import json
 import time
 import yaml
 import requests
-improt sys
+import sys
 
 def get_rules(url_list):
     rules = set()
