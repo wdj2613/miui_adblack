@@ -48,7 +48,7 @@ def read_repo_file(path = "./repo_list.yaml"):
     with open(path, 'r', encoding='utf8') as file:
         info = yaml.safe_load(file)
     rulers = info.get("ruler")
-    return ruler
+    return rulers
 
 if __name__ == '__main__':
     if len(sys.argv) >1:
